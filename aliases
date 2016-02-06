@@ -1,0 +1,35 @@
+## Colorize output ##
+if [ -t 1 ]; then
+    ncolors=$(tput colors)
+    if test -n "$ncolors" && test $ncolors -ge 8; then
+        COLOR_ENABLED=1
+        alias grep='grep --color=auto'
+        alias egrep='egrep --color=auto'
+        alias fgrep='fgrep --color=auto'
+        alias ls='ls --color=auto'
+        alias diff='colordiff'
+    fi
+fi
+
+## Handy short cuts ##
+alias h='history'
+alias j='jobs -l'
+alias l='ls -la'
+alias f=find . -name $1
+
+## Display file names and sort files by size ##
+alias dus='du -sk * | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done'
+
+## Copy file and display progress ##
+alias c='rsync -ah --progress'
+
+## Change directory ##
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+## Show open ports ##
+alias ports='netstat -tulanp'
+
