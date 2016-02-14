@@ -32,6 +32,16 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'     " Download huge bunchs of themes
 
 
+"-------[ AUTOCOMPLETE ]------------------------------------------------------"
+
+Plugin 'Valloric/YouCompleteMe'
+let g:clang_library_path='/usr/lib/llvm-3.6/lib'  " Set path to clang lib
+set backspace=indent,eol,start      " Make backspace work again
+
+"autocmd CursorMovedI * if pumvisible() == 0 && bufname("%") != "[Command Line]"|silent! pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0 && bufname("%") != "[Command Line]" |silent! pclose|endif
+
+
 "-------[ NERDTREE ]----------------------------------------------------------"
 
 let g:nerdtree_tabs_open_on_console_startup = 0 " Disable on startup
@@ -105,6 +115,10 @@ function! TrimWhiteSpace()
      %s/\s\+$//e
 endfunction
 
+
+"Misc overwrites of default color highlighting.
+"hi Comment ctermfg=DarkGreen
+"hi String ctermfg=DarkMagenta
 
 "-------[ NAVIGATION ]--------------------------------------------------------"
 
