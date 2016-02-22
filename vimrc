@@ -35,7 +35,7 @@ Plugin 'flazz/vim-colorschemes'     " Download huge bunchs of themes
 "-------[ AUTOCOMPLETE ]------------------------------------------------------"
 
 Plugin 'Valloric/YouCompleteMe'
-let g:clang_library_path='/usr/lib/llvm-3.6/lib'  " Set path to clang lib
+let g:clang_library_path='/usr/lib/llvm-3.5/lib'  " Set path to clang lib
 set backspace=indent,eol,start      " Make backspace work again
 
 "autocmd CursorMovedI * if pumvisible() == 0 && bufname("%") != "[Command Line]"|silent! pclose|endif
@@ -85,6 +85,7 @@ set cursorline                            " Highlight current line
 set modelines=0
 set clipboard=unnamed
 set synmaxcol=128
+set colorcolumn=80                        " Set max column number
 set ttyscroll=10
 set fileencodings=utf-8                   " Use UTF8 for new files
 set wrap                                  " Automatic line wrapping
@@ -115,6 +116,7 @@ function! TrimWhiteSpace()
      %s/\s\+$//e
 endfunction
 
+autocmd BufWritePre * :%s/\s\+$//e       " Remove trailing spaces when saving
 
 "Misc overwrites of default color highlighting.
 "hi Comment ctermfg=DarkGreen
