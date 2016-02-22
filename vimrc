@@ -35,6 +35,7 @@ Plugin 'flazz/vim-colorschemes'     " Download huge bunchs of themes
 "-------[ AUTOCOMPLETE ]------------------------------------------------------"
 
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 let g:clang_library_path='/usr/lib/llvm-3.5/lib'  " Set path to clang lib
 set backspace=indent,eol,start      " Make backspace work again
 
