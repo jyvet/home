@@ -103,6 +103,7 @@ colo hybrid
 syntax on
 
 map <F2> :retab <CR> :wq! <CR>
+set pastetoggle=<F10>
 
 
 "-------[ HIGHLIGHT TRAILING WHITESPACE ]-------------------------------------"
@@ -122,6 +123,7 @@ autocmd BufWritePre * :%s/\s\+$//e       " Remove trailing spaces when saving
 "Misc overwrites of default color highlighting.
 "hi Comment ctermfg=DarkGreen
 "hi String ctermfg=DarkMagenta
+
 
 "-------[ NAVIGATION ]--------------------------------------------------------"
 
