@@ -103,7 +103,8 @@ colo hybrid
 syntax on
 
 map <F2> :retab <CR> :wq! <CR>
-set pastetoggle=<F10>
+set pastetoggle=<F10>                     " Activate/desactivate paste mode
+nmap <silent> <Enter> o<Esc>              " New line in command mode
 
 
 "-------[ HIGHLIGHT TRAILING WHITESPACE ]-------------------------------------"
