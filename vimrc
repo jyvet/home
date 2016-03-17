@@ -43,6 +43,27 @@ set backspace=indent,eol,start      " Make backspace work again
 "autocmd InsertLeave * if pumvisible() == 0 && bufname("%") != "[Command Line]" |silent! pclose|endif
 
 
+"-------[ FILE SEARCH ]-------------------------------------------------------"
+"
+" Unite
+"   depend on vimproc
+"   ------------- VERY IMPORTANT ------------
+"   you have to go to .vim/bundle/vimproc.vim and do a ./make
+"   -----------------------------------------
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/unite.vim'
+
+let g:unite_source_history_yank_enable = 1
+try
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+endtry
+" search a file in the filetree
+nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+" reset not it is <C-l> normally
+:nnoremap <space>r <Plug>(unite_restart)
+
 "-------[ NERDTREE ]----------------------------------------------------------"
 
 let g:nerdtree_tabs_open_on_console_startup = 0 " Disable on startup
