@@ -99,6 +99,11 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
+"-------[ GIT ]---------------------------------------------------------------"
+
+Plugin 'airblade/vim-gitgutter'              " Show code change since last commit
+
+
 "-------[ INTERFACE ]---------------------------------------------------------"
 
 set mouse=a                               " Activate mouse support
