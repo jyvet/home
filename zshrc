@@ -8,7 +8,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -56,7 +57,8 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export PATH="/home/$DEFAULT_USER/usr/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+export LD_LIBRARY_PATH="/home/$DEFAULT_USER/usr/lib:$LD_LIBRARY_PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -87,5 +89,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [ -f ~/.aliases ]; then
-        . ~/.aliases
+    . ~/.aliases
+fi
+
+# set dark theme for xterm emulators
+if [[ "$TERM" == "xterm-256color" ]] || [[ "$TERM" == "xterm" ]]; then
+    xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT "dark" -id `xprop -root |
+        awk '/^_NET_ACTIVE_WINDOW/ {print $5}'`
 fi
