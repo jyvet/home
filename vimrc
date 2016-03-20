@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 "-------[ VIM INTERFACE ]-----------------------------------------------------"
 
+set background=dark
 let g:airline#extensions#tabline#enabled = 1 " Enabling tabline with
 set laststatus=2                             " display statusline all
 set timeoutlen=1000                          " timeout for shortcuts
