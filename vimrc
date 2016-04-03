@@ -44,6 +44,20 @@ set backspace=indent,eol,start      " Make backspace work again
 "autocmd InsertLeave * if pumvisible() == 0 && bufname("%") != "[Command Line]" |silent! pclose|endif
 
 
+"-------[ SYNTAX CHECKER ]----------------------------------------------------"
+
+Plugin 'scrooloose/syntastic'
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
 "-------[ FILE SEARCH ]-------------------------------------------------------"
 "
 " Unite
