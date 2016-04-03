@@ -65,6 +65,16 @@ nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 " reset not it is <C-l> normally
 :nnoremap <space>r <Plug>(unite_restart)
 
+
+"-------[ WORD SEARCH ]-------------------------------------------------------"
+
+Plugin 'rking/ag.vim'
+
+" --- type ° to search the word in all files in the current dir
+nmap ù :Ag <c-r>=expand("<cword>")<cr><cr>
+nnoremap <space>/ :Ag
+
+
 "-------[ NERDTREE ]----------------------------------------------------------"
 
 let g:nerdtree_tabs_open_on_console_startup = 0 " Disable on startup
@@ -85,6 +95,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>" " change 'previous field to '<shift
 
 Plugin 'honza/vim-snippets'                  " snippets files (support both ultisnips and snipMate)
 Plugin 'scrooloose/nerdcommenter'            " Commenter
+let mapleader=","
+set timeout timeoutlen=1500
 
 Plugin 'L9'
 Plugin 'Markdown'
