@@ -54,7 +54,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 
@@ -157,7 +157,6 @@ syntax on
 
 map <F2> :retab <CR> :wq! <CR>
 set pastetoggle=<F10>                     " Activate/desactivate paste mode
-nmap <silent> <Enter> o<Esc>              " New line in command mode
 
 
 "-------[ HIGHLIGHT TRAILING WHITESPACE ]-------------------------------------"
