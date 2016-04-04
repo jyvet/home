@@ -19,9 +19,10 @@
     use_system_font = False
     foreground_color = "#03f5ef"
     icon_bell = False
-    font = Hack 10
+    font = Hack 11
     scrollback_infinite = True
   [[custom]]
+    background_image = None
 [layouts]
   [[default]]
     [[[child1]]]
