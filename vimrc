@@ -38,6 +38,7 @@ Plugin 'flazz/vim-colorschemes'     " Download huge bunchs of themes
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 let g:clang_library_path='/usr/lib/llvm-3.5/lib'  " Set path to clang lib
+let g:ycm_confirm_extra_conf = 0
 set backspace=indent,eol,start      " Make backspace work again
 
 "autocmd CursorMovedI * if pumvisible() == 0 && bufname("%") != "[Command Line]"|silent! pclose|endif
