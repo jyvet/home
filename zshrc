@@ -1,4 +1,5 @@
 export TERM="xterm-256color"
+export EDITOR="vim"
 export DEFAULT_USER="$USER"
 
 # Path to your oh-my-zsh installation.
