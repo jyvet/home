@@ -31,6 +31,7 @@ Plugin 'powerline/fonts'            " Powerline fonts for smooth char
 Plugin 'bling/vim-airline'          " Displaying smooth statusline
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'     " Download huge bunchs of themes
+Plugin 'ervandew/supertab'          " Used for YCM and ultisnips compatibility
 
 
 "-------[ AUTOCOMPLETE ]------------------------------------------------------"
@@ -40,6 +41,13 @@ Plugin 'rdnetto/YCM-Generator'
 let g:clang_library_path='/usr/lib/llvm-3.5/lib'  " Set path to clang lib
 let g:ycm_confirm_extra_conf = 0
 set backspace=indent,eol,start      " Make backspace work again
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
+nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
 
 "autocmd CursorMovedI * if pumvisible() == 0 && bufname("%") != "[Command Line]"|silent! pclose|endif
 "autocmd InsertLeave * if pumvisible() == 0 && bufname("%") != "[Command Line]" |silent! pclose|endif
@@ -104,9 +112,10 @@ Plugin 'jistr/vim-nerdtree-tabs'                " Extended NERDTree w/ tabs hand
 
 "-------[ SNIPPETS ]----------------------------------------------------------"
 
-let g:UltiSnipsExpandTrigger="<tab>"         " change snippet trigger on '<tab>'
-let g:UltiSnipsJumpForwardTrigger="<tab>"    " change 'next field' to '<tab>'
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>" " change 'previous field to '<shift-tab>'
+Plugin 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 Plugin 'honza/vim-snippets'                  " snippets files (support both ultisnips and snipMate)
 Plugin 'scrooloose/nerdcommenter'            " Commenter
@@ -120,7 +129,6 @@ Plugin 'FuzzyFinder'
 " The following are examples of different formats supported.
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 call vundle#end()            " required
