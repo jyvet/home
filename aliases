@@ -23,6 +23,30 @@ alias dus='du -sk * | sort -n | while read size fname; do for unit in k M G T P 
 ## Copy file and display progress ##
 alias c='rsync -ah --progress'
 
+# Convert hexa to decimal and binary
+0x () {
+    local val=$(tr '[a-z]' '[A-Z]' <<< $1)
+    echo "decimal: `BC_LINE_LENGTH=0 bc <<< \"ibase=16;$val\"`"
+    echo "binary:  `BC_LINE_LENGTH=0 bc <<< \"ibase=16;obase=2;$val\"`"
+}
+
+# Convert binary to decimal and hexa
+0b () {
+    local val=$(tr '[a-z]' '[A-Z]' <<< $1)
+    echo "decimal: `BC_LINE_LENGTH=0 bc <<< \"ibase=2;$val\"`"
+    echo "hexa:    `BC_LINE_LENGTH=0 bc <<< \"ibase=2;obase=10000;$val\"`"
+}
+
+# Convert decimal to binary and hexa
+0d () {
+    local val="$1"
+    echo "binary: `BC_LINE_LENGTH=0 bc <<< \"obase=2;$val\"`"
+    echo "hexa:   `BC_LINE_LENGTH=0 bc <<< \"obase=16;$val\"`"
+}
+
+# Display pid from process name
+alias pid='ps -el | head -1 && ps -el | grep $1'
+
 ## Change directory ##
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -30,8 +54,16 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+alias ltree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+
 ## Show open ports ##
 alias ports='netstat -tulanp'
+
+## Show my external ip
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+## Kill all my processes
+alias nuke='pkill -u $USER'
 
 ## Indicate where to locate gdb conf file (for sudo mode)
 alias gdb='gdb --init-command=/home/$USER/.gdbinit'
