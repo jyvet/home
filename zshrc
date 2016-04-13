@@ -105,6 +105,6 @@ fi
 
 # set dark theme for xterm emulators
 if [[ "$TERM" == "xterm-256color" ]] || [[ "$TERM" == "xterm" ]]; then
-    xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT "dark" -id `xprop -root |
-        awk '/^_NET_ACTIVE_WINDOW/ {print $5}'`
+    xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT "dark" -id \
+     `xprop -root 2>&1 |awk '/^_NET_ACTIVE_WINDOW/ {print $5}'` > /dev/null 2>&1
 fi
