@@ -33,5 +33,8 @@ alias ......='cd ../../../../..'
 ## Show open ports ##
 alias ports='netstat -tulanp'
 
+## Indicate where to locate gdb conf file (for sudo mode)
+alias gdb='gdb --init-command=/home/$USER/.gdbinit'
+
 ## Aliases support in sudo mode
 alias sudo='sudo '
