@@ -1,9 +1,18 @@
+greplcolors() {
+     if [ -t 0 ]; then
+        # Display file names and line numbers if no stdin
+        grep --color=auto -HTn $*
+     else
+        grep --color=auto $*
+     fi
+}
+
 ## Colorize output ##
 if [ -t 1 ]; then
     ncolors=$(tput colors)
     if test -n "$ncolors" && test $ncolors -ge 8; then
         COLOR_ENABLED=1
-        alias grep='grep --color=auto -HTn'
+        alias grep='greplcolors'
         alias egrep='egrep --color=auto'
         alias fgrep='fgrep --color=auto'
         alias ls='ls --color=auto'
