@@ -148,6 +148,12 @@ filetype plugin indent on    " required
 Plugin 'airblade/vim-gitgutter'              " Show code change since last commit
 
 
+"-------[ LINE NUMBERS ]---------------------------------------------------------"
+
+set number                                   " Display line numbers
+nmap <silent> <C-W> :set relativenumber!<CR> " Toggle absolute/relative count
+
+
 "-------[ INTERFACE ]---------------------------------------------------------"
 
 set mouse=a                               " Activate mouse support
@@ -160,7 +166,6 @@ set colorcolumn=80                        " Set max column number
 set ttyscroll=10
 set fileencodings=utf-8                   " Use UTF8 for new files
 set wrap                                  " Automatic line wrapping
-set number                                " Display line number
 set tabstop=4 shiftwidth=4 expandtab      " Expand tab to spaces
 set nowritebackup
 set noswapfile
