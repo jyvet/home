@@ -181,14 +181,24 @@ map <F2> :retab <CR> :wq! <CR>
 set pastetoggle=<F10>                     " Activate/desactivate paste mode
 
 
+"-------[ HIGHLIGHT TAB ]-----------------------------------------------------"
+
+syntax match Tab "\t"
+hi Tab ctermbg=DarkMagenta guibg=DarkMagenta
+
+
 "-------[ HIGHLIGHT TRAILING WHITESPACE ]-------------------------------------"
 
-highlight ExtraWhitespace ctermbg=darkgrey guibg=darkgrey
-match ExtraWhitespace /\s\+$/
+syntax match ExtraWhitespace /\s\+$/
+hi ExtraWhitespace ctermbg=DarkGrey guibg=DarkGrey
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * 2match Tab "\t"
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertEnter * 2match Tab /\t\+\%#\@<!/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd InsertLeave * 2match Tab "\t"
 autocmd BufWinLeave * call clearmatches()
+
 function! TrimWhiteSpace()
      %s/\s\+$//e
 endfunction
