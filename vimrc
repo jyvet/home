@@ -110,6 +110,15 @@ Plugin 'scrooloose/nerdtree'                    " Standard NERDTree
 Plugin 'jistr/vim-nerdtree-tabs'                " Extended NERDTree w/ tabs handling
 
 
+"-------[ COMMENTER ]---------------------------------------------------------"
+"
+" Comment code
+"    [count],c<space>  Toggles the comment state of the selected line(s).
+Plugin 'scrooloose/nerdcommenter'            " Commenter
+let mapleader=","
+set timeout timeoutlen=1500
+
+
 "-------[ SNIPPETS ]----------------------------------------------------------"
 
 Plugin 'SirVer/ultisnips'
@@ -118,9 +127,8 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 Plugin 'honza/vim-snippets'                  " snippets files (support both ultisnips and snipMate)
-Plugin 'scrooloose/nerdcommenter'            " Commenter
-let mapleader=","
-set timeout timeoutlen=1500
+
+
 
 Plugin 'L9'
 Plugin 'Markdown'
