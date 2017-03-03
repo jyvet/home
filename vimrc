@@ -46,11 +46,11 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
-nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
+"inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
+"nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
 
-"autocmd CursorMovedI * if pumvisible() == 0 && bufname("%") != "[Command Line]"|silent! pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0 && bufname("%") != "[Command Line]" |silent! pclose|endif
+autocmd CursorMovedI * if pumvisible() == 0 && bufname("%") != "[Command Line]"|silent! pclose|endif
+autocmd InsertLeave * if pumvisible() == 0 && bufname("%") != "[Command Line]" |silent! pclose|endif
 
 
 "-------[ SYNTAX CHECKER ]----------------------------------------------------"
@@ -79,7 +79,7 @@ Plugin 'Shougo/unite.vim'
 
 let g:unite_source_history_yank_enable = 1
 try
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  let g:unite_source_rec_async_command='git grep -n --no-color --cached "" -- "."'
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
 catch
 endtry
@@ -93,8 +93,8 @@ nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
 
 Plugin 'rking/ag.vim'
 
-" --- type ° to search the word in all files in the current dir
-nmap ù :Ag <c-r>=expand("<cword>")<cr><cr>
+" --- type ù to search the word in all files in the current dir
+nmap ù :Unite grep/git:/:--cached:<c-r>=expand("<cword>")<cr><cr>
 nnoremap <space>/ :Ag
 
 
@@ -180,6 +180,9 @@ syntax on
 map <F2> :retab <CR> :wq! <CR>
 set pastetoggle=<F10>                     " Activate/desactivate paste mode
 
+set smartindent
+set cino+=(0                              " Align function arguments
+
 
 "-------[ HIGHLIGHT TAB ]-----------------------------------------------------"
 
@@ -212,8 +215,11 @@ autocmd BufWritePre * :%s/\s\+$//e       " Remove trailing spaces when saving
 
 "-------[ NAVIGATION ]--------------------------------------------------------"
 
-"" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+map <c-m> :w <CR> :make -j 22<CR>
+map <c-i> :make install<CR>
+map <c-h> :new %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+
+nmap <silent> <c-up> :wincmd k<CR>
+nmap <silent> <c-down> :wincmd j<CR>
+nmap <silent> <c-left> :wincmd h<CR>
+nmap <silent> <c-right> :wincmd l<CR>
