@@ -53,6 +53,11 @@ alias c='rsync -ah --progress'
     echo "hexa:   `BC_LINE_LENGTH=0 bc <<< \"obase=16;$val\"`"
 }
 
+# Display weather report
+meteo () {
+    curl http://v2.wttr.in/$1
+}
+
 # Display pid from process name
 alias pid='ps -el | head -1 && ps -el | grep $1'
 
